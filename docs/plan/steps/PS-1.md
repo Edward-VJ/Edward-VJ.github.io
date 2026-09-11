@@ -2,21 +2,21 @@
 step: PS-1
 title: Scaffold, gates, deploy
 branch: ps-1-scaffold
-pr: null
-status: in-progress
-signedOff: null
+pr: 1
+status: signed-off
+signedOff: 2026-09-11
 criteria:
-  - { id: PS-1.1, kind: machine, passed: false, evidence: null }
-  - { id: PS-1.2, kind: machine, passed: false, evidence: null }
+  - { id: PS-1.1, kind: machine, passed: true, evidence: "https://github.com/Edward-VJ/Edward-VJ.github.io/actions/runs/34591687107" }
+  - { id: PS-1.2, kind: machine, passed: true, evidence: "https://github.com/Edward-VJ/Edward-VJ.github.io/actions/runs/34591473070" }
   - { id: PS-1.3, kind: machine, passed: true, evidence: "local SonarQube 26.9, quality gate PASSED, 2026-09-11" }
-  - { id: PS-1.4, kind: machine, passed: false, evidence: null }
+  - { id: PS-1.4, kind: machine, passed: true, evidence: "hard-rules step green in run 34590641354 and 34591473070" }
   - { id: PS-1.5, kind: machine, passed: true, evidence: "https://github.com/Edward-VJ/Edward-VJ.github.io/actions/runs/34590641354" }
   - { id: PS-1.6, kind: machine, passed: true, evidence: "runs 34590924744 (size), 34591030925 (hard rules), 34589234940 (links)" }
 ---
 
 # PS-1 — Scaffold, gates, deploy
 
-Started 11 September 2026.
+Started and signed off 11 September 2026. Merged as PR #1 (squash commit 7570975).
 
 ## Resolved at this step
 
@@ -47,9 +47,9 @@ Started 11 September 2026.
 
 | id | criterion | evidence |
 |---|---|---|
-| PS-1.1 | The deploy workflow's live check passes against the root URL | pending |
-| PS-1.2 | `ci` runs every gate green and is the required check on `main`; `npm ci` green on Linux | pending |
+| PS-1.1 | The deploy workflow's live check passes against the root URL | deploy run 34591687107; `https://edward-vj.github.io/` returned 200 with `<h1>Edward Jakunskas</h1>` |
+| PS-1.2 | `ci` runs every gate green and is the required check on `main`; `npm ci` green on Linux | PR run 34590641354 and main run 34591473070 green; ruleset requires `ci` |
 | PS-1.3 | Local SonarQube gate passes for the project | PASSED, 2026-09-11, local dashboard `dashboard?id=edward-vj-github-io` |
-| PS-1.4 | Hard rules green over the public plan | pending |
+| PS-1.4 | Hard rules green over the public plan | hard-rules step green on every green run |
 | PS-1.5 | Lighthouse ≥ 0.95 in all four categories on the placeholder | 1.00 / 1.00 / 1.00 / 1.00 on `/` and `/404.html`, median of 3 mobile runs, CI run 34590641354 |
 | PS-1.6 | Three red runs recorded (size budget, hard rules, links) | size budget 1 B → build failed at `npx size-limit`, run 34590924744; hard rules (fake phone number in README) → quality failed at the hard-rules step, run 34591030925; links → the genuine broken-link run 34589234940 (lychee rejected a footer link to a route that did not exist yet), plus 34589995064 (a GitHub path that only exists after merge) |
