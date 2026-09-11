@@ -1,0 +1,48 @@
+{
+  "name": "edward-vj.github.io",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Personal site of Edward Jakunskas. Static Astro on GitHub Pages, built with Claude Code from a public plan.",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "packageManager": "npm@11.9.0",
+  "scripts": {
+    "predev": "node scripts/build-stats.ts",
+    "dev": "astro dev",
+    "prebuild": "node scripts/build-stats.ts",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest",
+    "e2e": "playwright test",
+    "e2e:update": "playwright test tests/visual --update-snapshots",
+    "size": "size-limit",
+    "check:assets": "node scripts/check-assets.ts",
+    "check:trailers": "node scripts/check-trailers.ts",
+    "check:rules": "node scripts/hard-rules/index.ts",
+    "lhci:urls": "node scripts/lhci-urls.ts",
+    "sonar": "node scripts/sonar.ts"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
+    "astro": "7.3.2",
+    "sharp": "0.35.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@size-limit/file": "13.0.3",
+    "@types/node": "24.13.4",
+    "@vitest/coverage-v8": "5.0.0",
+    "size-limit": "13.0.3",
+    "typescript": "6.0.3",
+    "vitest": "5.0.0"
+  },
+  "allowScripts": {
+    "esbuild": true,
+    "sharp": true
+  }
+}

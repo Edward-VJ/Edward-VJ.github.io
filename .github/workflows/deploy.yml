@@ -1,0 +1,53 @@
+name: deploy
+
+# Runs only after the `ci` workflow succeeds on main. Never commits anything.
+on:
+  workflow_run:
+    workflows: [ci]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Download test results from the ci run (best effort)
+        if: ${{ github.event_name == 'workflow_run' }}
+        uses: actions/download-artifact@v8
+        continue-on-error: true
+        with:
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pattern: '{coverage,playwright-report}'
+          merge-multiple: false
+      - uses: withastro/action@v6
+        with:
+          node-version: 24
+          build-cmd: npm run build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
+      - name: Live check
+        run: curl -sf https://edward-vj.github.io/ | grep -q '<h1'

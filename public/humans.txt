@@ -1,0 +1,9 @@
+/* TEAM */
+Edward Jakunskas — direction, plan, sign-off. Dublin, Ireland.
+Claude Code — every commit.
+
+/* SITE */
+Framework: Astro 7
+Hosting: GitHub Pages
+Plan: /how-this-was-built/
+Source: https://github.com/Edward-VJ/Edward-VJ.github.io
