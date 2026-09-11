@@ -98,8 +98,10 @@ jobs:
           args: --root-dir "${{ github.workspace }}/dist" --remap "https://edward-vj.github.io/ file://${{ github.workspace }}/dist/" --accept 200..=204,403,429 --no-progress --verbose './dist/**/*.html'
           token: ${{ secrets.GITHUB_TOKEN }}
           fail: true
-      - run: node scripts/check-trailers.ts
+      # On pull requests HEAD is GitHub's synthetic merge commit, so check the real base..head range.
+      - run: node scripts/check-trailers.ts "$RANGE"
         env:
+          RANGE: ${{ github.event_name == 'pull_request' && format('{0}..{1}', github.event.pull_request.base.sha, github.event.pull_request.head.sha) || 'HEAD' }}
           PR_TITLE: ${{ github.event.pull_request.title }}
       - run: node scripts/hard-rules/index.ts
         env:
