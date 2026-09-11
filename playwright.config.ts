@@ -18,7 +18,7 @@ export default defineConfig({
     toHaveScreenshot: { maxDiffPixelRatio: 0.01 },
   },
   webServer: {
-    command: 'npm run preview -- --host 127.0.0.1 --port 4321',
+    command: 'node scripts/preview.ts',
     url: 'http://localhost:4321/',
     reuseExistingServer: !isCI,
     timeout: 60_000,
