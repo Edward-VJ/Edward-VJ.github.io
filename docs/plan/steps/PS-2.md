@@ -31,6 +31,7 @@ Started 11 September 2026.
   proves the island boot mechanism and produces the first real chunk for the size budgets.
 - Gate refinements found by the tests: the per-route script allowance is a maximum, not an exact count; fonts are counted by unique URL because WebKit reports a preloaded font twice; the `shared` chunk budget moved from size-limit (which cannot express "may match nothing") into `scripts/check-assets.ts`.
 - Local SonarQube (gate G7) first flagged seven new-code style findings (replaceAll, dataset, Number.parseInt, networkidle waits in tests); all fixed, rescanned, gate PASSED.
+- H1 round of changes (Edward, 11 Sep): the one-line pitch merged the two identities too hard. Reworded so robotics stands on its own first and the AI-native work is a recent, separate track: "Computer vision and robotics engineer, with a research MSc from Maynooth. Since 2026 also an AI-native software engineer: production systems delivered by directing coding agents." A two-track line under the name makes the split scannable. Applied to the landing, the meta description, the social image and the README.
 - Theme: one inline script before paint applies the stored choice; a second, tiny inline script
   wires the toggle. Both count against the 1 KB inline budget.
 

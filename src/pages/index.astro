@@ -5,14 +5,15 @@ import headshot from '../assets/edward-336.png';
 ---
 <BaseLayout
   title="Edward Jakunskas"
-  description="Edward Jakunskas, Dublin. Computer vision and robotics engineer (MSc) who delivers production software by directing AI agents. Read the site, or play the courtyard."
+  description="Edward Jakunskas, Dublin. Computer vision and robotics engineer (research MSc, Maynooth). Since 2026 also an AI-native software engineer, delivering production systems by directing coding agents."
   path="/"
 >
   <section class="hero">
     <Image src={headshot} width={168} height={168} alt="Edward Jakunskas" class="headshot" loading="eager" />
     <div>
       <h1>Edward Jakunskas</h1>
-      <p class="lede">Computer vision and robotics engineer (MSc, Maynooth) who delivers production software by directing AI agents. Dublin, Ireland.</p>
+      <p class="tracks sans"><span>Computer vision &amp; robotics</span><span class="sep" aria-hidden="true">·</span><span>AI-native software</span><span class="sep" aria-hidden="true">·</span><span>Dublin, Ireland</span></p>
+      <p class="lede">Computer vision and robotics engineer, with a research MSc from Maynooth. Since 2026 also an AI-native software engineer: production systems delivered by directing coding agents.</p>
       <p class="links sans">
         <a href="https://github.com/Edward-VJ">GitHub</a>
         <a href="https://www.linkedin.com/in/edward-jakunskas/">LinkedIn</a>
@@ -42,6 +43,8 @@ import headshot from '../assets/edward-336.png';
 <style>
   .hero { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start; margin-bottom: 2.5rem; }
   .headshot { border-radius: 8px; width: 168px; height: 168px; }
+  .tracks { display: flex; flex-wrap: wrap; gap: 0.35rem 0.6rem; margin: -0.25rem 0 0.9rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+  .tracks .sep { color: var(--muted); font-weight: 400; }
   .lede { font-size: 1.2rem; line-height: 1.45; color: var(--ink-2); }
   .links a { margin-right: 1.25rem; }
   @media (max-width: 560px) { .hero { grid-template-columns: 1fr; } .headshot { width: 120px; height: 120px; } }
