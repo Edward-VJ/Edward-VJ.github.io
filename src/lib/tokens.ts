@@ -85,7 +85,7 @@ export function hexToRgb(hex: string): [number, number, number] {
   const h = hex.replace('#', '');
   const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
   if (!/^[0-9a-f]{6}$/i.test(full)) throw new Error(`bad hex colour: ${hex}`);
-  return [parseInt(full.slice(0, 2), 16), parseInt(full.slice(2, 4), 16), parseInt(full.slice(4, 6), 16)];
+  return [Number.parseInt(full.slice(0, 2), 16), Number.parseInt(full.slice(2, 4), 16), Number.parseInt(full.slice(4, 6), 16)];
 }
 
 /** WCAG relative luminance. */

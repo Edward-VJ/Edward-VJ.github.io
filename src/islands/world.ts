@@ -8,5 +8,5 @@ export function mount(el: HTMLElement): void {
   p.className = 'sans';
   p.textContent = 'The courtyard is being built in step PS-8. This message came from the island module loaded on demand.';
   el.appendChild(p);
-  el.setAttribute('data-island', 'world');
+  el.dataset.island = 'world';
 }

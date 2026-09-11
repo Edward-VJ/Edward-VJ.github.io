@@ -24,7 +24,8 @@ test.describe('network JS budget', () => {
           fonts.set(res.url(), Number(res.headers()['content-length'] ?? 0));
         }
       });
-      await page.goto(route, { waitUntil: 'networkidle' });
+      await page.goto(route, { waitUntil: 'load' });
+      await expect(page.locator('h1')).toBeVisible();
       expect(scripts.length, `scripts loaded on ${route}: ${scripts.join(', ')}`).toBeLessThanOrEqual(SCRIPT_ALLOWANCE[route] ?? 0);
       expect(fonts.size, `font files: ${[...fonts.keys()].join(', ')}`).toBeLessThanOrEqual(4);
       expect([...fonts.values()].reduce((n, b) => n + b, 0), 'font bytes').toBeLessThanOrEqual(122_880);

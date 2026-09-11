@@ -30,6 +30,7 @@ Started 11 September 2026.
 - `/play/` is a placeholder whose Enter button dynamically imports `src/islands/world.ts`; this
   proves the island boot mechanism and produces the first real chunk for the size budgets.
 - Gate refinements found by the tests: the per-route script allowance is a maximum, not an exact count; fonts are counted by unique URL because WebKit reports a preloaded font twice; the `shared` chunk budget moved from size-limit (which cannot express "may match nothing") into `scripts/check-assets.ts`.
+- Local SonarQube (gate G7) first flagged seven new-code style findings (replaceAll, dataset, Number.parseInt, networkidle waits in tests); all fixed, rescanned, gate PASSED.
 - Theme: one inline script before paint applies the stored choice; a second, tiny inline script
   wires the toggle. Both count against the 1 KB inline budget.
 

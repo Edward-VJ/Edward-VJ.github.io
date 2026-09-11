@@ -62,10 +62,12 @@ test.describe('landing (PS-2)', () => {
   test('the Play door loads its island only on Enter', async ({ page }) => {
     const scripts: string[] = [];
     page.on('request', (r) => { if (r.resourceType() === 'script') scripts.push(r.url()); });
-    await page.goto('/play/', { waitUntil: 'networkidle' });
+    await page.goto('/play/');
+    const enter = page.getByRole('button', { name: 'Enter' });
+    await expect(enter).toBeVisible();
     const before = scripts.length;
     expect(before).toBeLessThanOrEqual(1);
-    await page.getByRole('button', { name: 'Enter' }).click();
+    await enter.click();
     await expect(page.locator('#world[data-island="world"]')).toHaveCount(1);
     expect(scripts.length).toBeGreaterThan(before);
   });
