@@ -42,5 +42,3 @@ npm test && npm run e2e
 Code: MIT (`LICENSE`). Prose in `docs/` and `src/content/`: CC BY 4.0 (`LICENSE-CONTENT.md`).
 Photographs, figures and CV PDFs: all rights reserved (per-folder `LICENSE` files). Third-party
 assets and their licences are listed in `NOTICE.md` and on `/credits/`.
-
-Contact by phone: +353 89 000 0000 (deliberate hard-rules breach, reverted in the next commit)

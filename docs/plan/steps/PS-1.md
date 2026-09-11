@@ -11,7 +11,7 @@ criteria:
   - { id: PS-1.3, kind: machine, passed: true, evidence: "local SonarQube 26.9, quality gate PASSED, 2026-09-11" }
   - { id: PS-1.4, kind: machine, passed: false, evidence: null }
   - { id: PS-1.5, kind: machine, passed: true, evidence: "https://github.com/Edward-VJ/Edward-VJ.github.io/actions/runs/34590641354" }
-  - { id: PS-1.6, kind: machine, passed: false, evidence: null }
+  - { id: PS-1.6, kind: machine, passed: true, evidence: "runs 34590924744 (size), 34591030925 (hard rules), 34589234940 (links)" }
 ---
 
 # PS-1 — Scaffold, gates, deploy
@@ -52,4 +52,4 @@ Started 11 September 2026.
 | PS-1.3 | Local SonarQube gate passes for the project | PASSED, 2026-09-11, local dashboard `dashboard?id=edward-vj-github-io` |
 | PS-1.4 | Hard rules green over the public plan | pending |
 | PS-1.5 | Lighthouse ≥ 0.95 in all four categories on the placeholder | 1.00 / 1.00 / 1.00 / 1.00 on `/` and `/404.html`, median of 3 mobile runs, CI run 34590641354 |
-| PS-1.6 | Three deliberate red runs recorded (size budget, hard rules, links) | pending |
+| PS-1.6 | Three red runs recorded (size budget, hard rules, links) | size budget 1 B → build failed at `npx size-limit`, run 34590924744; hard rules (fake phone number in README) → quality failed at the hard-rules step, run 34591030925; links → the genuine broken-link run 34589234940 (lychee rejected a footer link to a route that did not exist yet), plus 34589995064 (a GitHub path that only exists after merge) |
