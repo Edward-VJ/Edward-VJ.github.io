@@ -25,6 +25,7 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: node scripts/build-stats.ts
       - run: npx astro check
       - run: npx tsc --noEmit
       - run: npx vitest run --coverage

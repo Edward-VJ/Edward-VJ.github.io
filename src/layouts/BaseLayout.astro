@@ -11,7 +11,7 @@ interface Props {
 }
 const { title, description, path } = Astro.props;
 const canonical = new URL(path, SITE_URL).href;
-const signedOff = buildStats.steps.filter((s) => s.status === 'signed-off').length;
+const signedOff = (buildStats.steps as Array<{ status: string }>).filter((s) => s.status === 'signed-off').length;
 ---
 <html lang="en">
   <head>
