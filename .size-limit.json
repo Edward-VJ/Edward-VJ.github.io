@@ -1,0 +1,3 @@
+[
+  { "name": "index.html", "path": "dist/index.html", "limit": "10 kB", "gzip": true }
+]

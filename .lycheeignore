@@ -1,0 +1,5 @@
+# One pattern per line. Every addition carries a dated comment with the observed status code.
+# 2026-09-11 — LinkedIn answers HTTP 999 to non-browser clients.
+linkedin.com
+# 2026-09-11 — form endpoint; POST only, GET is not meaningful.
+api.web3forms.com
