@@ -10,7 +10,7 @@ criteria:
   - { id: PS-1.2, kind: machine, passed: false, evidence: null }
   - { id: PS-1.3, kind: machine, passed: true, evidence: "local SonarQube 26.9, quality gate PASSED, 2026-09-11" }
   - { id: PS-1.4, kind: machine, passed: false, evidence: null }
-  - { id: PS-1.5, kind: machine, passed: false, evidence: null }
+  - { id: PS-1.5, kind: machine, passed: true, evidence: "https://github.com/Edward-VJ/Edward-VJ.github.io/actions/runs/34590641354" }
   - { id: PS-1.6, kind: machine, passed: false, evidence: null }
 ---
 
@@ -38,6 +38,7 @@ Started 11 September 2026.
 - `astro preview` returns HTTP 404 for unknown paths on both browser projects (recorded from the smoke test annotation); tests address the 404 page as `/404.html`.
 - Local SonarQube (Community Build 26.9) first scan: quality gate PASSED, project `edward-vj-github-io`.
 - The `shared` size-limit entry is added in PS-2 when the first island boot module exists (size-limit refuses a pattern that matches no files).
+- First fully green CI run: 34590641354 (build, e2e in the Playwright container, quality: Lighthouse, links, trailers, hard rules). Earlier runs each retired one gate: generated JSON missing before `astro check` (34589062945), a footer link to a route that does not exist yet (34589234940, the links gate), the trailer gate reading GitHub's synthetic merge commit (34590346456).
 - Wired the gates: `ci.yml` (build → e2e in the Playwright container → quality: Lighthouse, links,
   trailers, hard rules → a single required `ci` check) and `deploy.yml` (runs only after `ci`
   succeeds on `main`; never commits).
@@ -50,5 +51,5 @@ Started 11 September 2026.
 | PS-1.2 | `ci` runs every gate green and is the required check on `main`; `npm ci` green on Linux | pending |
 | PS-1.3 | Local SonarQube gate passes for the project | PASSED, 2026-09-11, local dashboard `dashboard?id=edward-vj-github-io` |
 | PS-1.4 | Hard rules green over the public plan | pending |
-| PS-1.5 | Lighthouse ≥ 0.95 in all four categories on the placeholder | pending |
+| PS-1.5 | Lighthouse ≥ 0.95 in all four categories on the placeholder | 1.00 / 1.00 / 1.00 / 1.00 on `/` and `/404.html`, median of 3 mobile runs, CI run 34590641354 |
 | PS-1.6 | Three deliberate red runs recorded (size budget, hard rules, links) | pending |

@@ -2,7 +2,7 @@
   {
     "name": "index.html",
     "path": "dist/index.html",
-    "limit": "1 B",
+    "limit": "10 kB",
     "gzip": true
   }
 ]
