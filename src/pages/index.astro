@@ -1,17 +1,55 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import headshot from '../assets/edward-336.png';
 ---
 <BaseLayout
   title="Edward Jakunskas"
-  description="Edward Jakunskas, Dublin. Computer vision and robotics engineer who delivers production software by directing AI agents. Site under construction from a public plan."
+  description="Edward Jakunskas, Dublin. Computer vision and robotics engineer (MSc) who delivers production software by directing AI agents. Read the site, or play the courtyard."
   path="/"
 >
-  <h1>Edward Jakunskas</h1>
-  <p>Computer vision and robotics engineer (MSc) who delivers production software by directing AI agents.</p>
-  <p>This site is being built step by step from a public plan. This is step PS-1 of 9: the scaffold and its quality gates.</p>
-  <p>
-    <a href="https://github.com/Edward-VJ">GitHub</a> ·
-    <a href="https://www.linkedin.com/in/edward-jakunskas/">LinkedIn</a> ·
-    <a href="mailto:ejakunskas@gmail.com">Email</a>
-  </p>
+  <section class="hero">
+    <Image src={headshot} width={168} height={168} alt="Edward Jakunskas" class="headshot" loading="eager" />
+    <div>
+      <h1>Edward Jakunskas</h1>
+      <p class="lede">Computer vision and robotics engineer (MSc, Maynooth) who delivers production software by directing AI agents. Dublin, Ireland.</p>
+      <p class="links sans">
+        <a href="https://github.com/Edward-VJ">GitHub</a>
+        <a href="https://www.linkedin.com/in/edward-jakunskas/">LinkedIn</a>
+        <a href="mailto:ejakunskas@gmail.com">Email</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="doors" aria-label="Two ways in">
+    <a class="door" href="/work/">
+      <span class="door-kicker sans">Read</span>
+      <span class="door-title">The site</span>
+      <span class="door-text">Work, research, the courtyard gallery, the cats, the CV, and how this site was built. Fast pages, no scripts.</span>
+    </a>
+    <a class="door" href="/play/">
+      <span class="door-kicker sans">Play</span>
+      <span class="door-title">The courtyard</span>
+      <span class="door-text">Walk a courtyard with seven stations and seven hidden cats. Two games: scan a dark room, and pong against a PID controller you tune.</span>
+    </a>
+  </section>
+
+  <section class="build-note">
+    <p>This site is being built step by step from a public plan, and every commit carries the step it belongs to. Step PS-2 of 9 is the design system and shell you are looking at. <a href="/how-this-was-built/">How this was built</a>.</p>
+  </section>
 </BaseLayout>
+
+<style>
+  .hero { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start; margin-bottom: 2.5rem; }
+  .headshot { border-radius: 8px; width: 168px; height: 168px; }
+  .lede { font-size: 1.2rem; line-height: 1.45; color: var(--ink-2); }
+  .links a { margin-right: 1.25rem; }
+  @media (max-width: 560px) { .hero { grid-template-columns: 1fr; } .headshot { width: 120px; height: 120px; } }
+  .doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin: 0 0 2.5rem; }
+  .door { display: flex; flex-direction: column; gap: 0.35rem; padding: 1.25rem 1.4rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; text-decoration: none; color: var(--ink); }
+  .door:hover, .door:focus-visible { border-color: var(--accent); }
+  .door-kicker { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+  .door-title { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 700; line-height: 1.15; }
+  .door-text { color: var(--ink-2); font-size: 0.98rem; }
+  .build-note { border-left: 3px solid var(--accent); padding-left: 1rem; color: var(--ink-2); }
+</style>

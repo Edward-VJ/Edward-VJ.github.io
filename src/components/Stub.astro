@@ -1,0 +1,21 @@
+---
+/** Placeholder page for a route that a later plan step fills in. */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {
+  title: string;
+  path: string;
+  step: string;
+  description: string;
+}
+const { title, path, step, description } = Astro.props;
+---
+<BaseLayout title={`${title} — Edward Jakunskas`} description={description} path={path}>
+  <h1>{title}</h1>
+  <p>{description}</p>
+  <p class="sans stub-note">This page arrives in step <strong>{step}</strong> of the plan. <a href="/how-this-was-built/">See the plan and progress.</a></p>
+</BaseLayout>
+
+<style>
+  .stub-note { color: var(--muted); border-top: 1px solid var(--line); padding-top: 1rem; }
+</style>

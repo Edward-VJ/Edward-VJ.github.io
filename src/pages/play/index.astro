@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Play — Edward Jakunskas" description="The courtyard: a walkable map with seven stations and seven hidden cats, plus two games. Being built step by step." path="/play/" wide={true}>
+  <h1>Play</h1>
+  <p>The courtyard is being built in step PS-8 of the plan. The two games arrive before it: <span class="sans">Pong vs PID</span> in PS-6 and <span class="sans">Scan the dark room</span> in PS-7. Nothing here loads until you press Enter.</p>
+  <p class="sans"><a href="/">Read instead</a></p>
+  <div id="world" class="world-box" aria-live="polite">
+    <button type="button" id="enter" class="enter">Enter</button>
+  </div>
+</BaseLayout>
+
+<script>
+  const btn = document.getElementById('enter') as HTMLButtonElement | null;
+  const box = document.getElementById('world');
+  btn?.addEventListener('click', async () => {
+    btn.disabled = true;
+    btn.textContent = 'Loading…';
+    const mod = await import('../../islands/world.ts');
+    if (box) mod.mount(box);
+  });
+</script>
+
+<style>
+  .world-box { min-height: 12rem; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1.5rem; }
+  .enter { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 700; background: var(--accent); color: var(--on-accent); border: 0; border-radius: 6px; padding: 0.7rem 1.6rem; cursor: pointer; }
+  .enter[disabled] { opacity: 0.7; cursor: default; }
+</style>

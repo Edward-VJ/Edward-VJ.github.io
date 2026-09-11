@@ -48,6 +48,13 @@ for (const f of files.filter((f) => f.endsWith('.html'))) {
   if (gz > 1024) problems.push(`${relative(root, f)}: inline script ${gz} B gz > 1024`);
 }
 
+// Shared chunks: any JS not owned by an island or a page boot module must stay under 10 KB gz in total.
+// (size-limit cannot express "may match nothing", so this budget lives here.)
+const OWNED = /(^|\/)(pong|scan|world|explorer|contact)\.[^/]*\.js$|_astro_type_script_/;
+const shared = files.filter((f) => f.endsWith('.js') && relative(root, f).replace(/\\/g, '/').startsWith('dist/_astro/') && !OWNED.test(relative(root, f).replace(/\\/g, '/')));
+const sharedGz = shared.reduce((n, f) => n + gzipSync(readFileSync(f)).length, 0);
+if (sharedGz > 10_240) problems.push(`shared JS chunks ${sharedGz} B gz > 10 KB: ${shared.map((f) => relative(root, f)).join(', ')}`);
+
 const sitemap = join(dist, 'sitemap-0.xml');
 const lhrc = join(root, 'lighthouserc.json');
 if (existsSync(sitemap) && existsSync(lhrc)) {
