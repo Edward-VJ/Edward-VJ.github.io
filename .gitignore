@@ -1,0 +1,36 @@
+# build output
+dist/
+.astro/
+
+# generated at build time, never committed
+src/data/build-stats.json
+src/data/last-run.json
+lighthouserc.json
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment / secrets (there are none in this repo by design)
+.env
+.env.*
+!.env.example
+
+# test artefacts
+coverage/
+playwright-report/
+test-results/
+.vitest/
+.lighthouseci/
+.scannerwork/
+
+# macOS / editors
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
