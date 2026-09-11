@@ -2,12 +2,12 @@
 step: PS-2
 title: Design system, landing, shell, stubs
 branch: ps-2-design
-pr: null
+pr: 2
 status: in-progress
 signedOff: null
 criteria:
-  - { id: PS-2.1, kind: machine, passed: false, evidence: null }
-  - { id: PS-2.2, kind: machine, passed: false, evidence: null }
+  - { id: PS-2.1, kind: machine, passed: true, evidence: "https://github.com/Edward-VJ/Edward-VJ.github.io/actions/runs/34593019361" }
+  - { id: PS-2.2, kind: machine, passed: true, evidence: "tests/unit/tokens.test.ts, 10 pairs per theme, run 34593019361" }
   - { id: PS-2.3, kind: human, passed: false, evidence: null }
 ---
 
@@ -38,6 +38,6 @@ Started 11 September 2026.
 
 | id | criterion | evidence |
 |---|---|---|
-| PS-2.1 | All PS-2 tests green; landing external JS = 0; fonts ≤ 4 files ≤ 120 KB | pending |
-| PS-2.2 | Contrast test passes in both themes | pending |
-| PS-2.3 | H1: look approved on desktop and phone; font names and licences in the decision log | pending |
+| PS-2.1 | All PS-2 tests green; landing external JS = 0; fonts ≤ 4 files ≤ 120 KB | CI run 34593019361 green; landing 4.03 KB gz HTML, 0 external scripts; 4 woff2 files, 84,928 B |
+| PS-2.2 | Contrast test passes in both themes | 10 pairs per theme ≥ 4.5:1, `tests/unit/tokens.test.ts` |
+| PS-2.3 | H1: look approved on desktop and phone; font names and licences in the decision log | awaiting Edward (screenshots sent 2026-09-11) |
