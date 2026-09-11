@@ -26,7 +26,7 @@ const problems: string[] = [];
 
 const IMAGE = /\.(png|jpe?g|webp|avif|gif)$/i;
 for (const f of files) {
-  const rel = relative(root, f).replace(/\\/g, '/');
+  const rel = relative(root, f).replaceAll('\\', '/');
   if (rel.startsWith('dist/_astro/') && IMAGE.test(rel) && statSync(f).size > 300 * 1024) {
     problems.push(`${rel}: image ${statSync(f).size} B > 300 KB`);
   }
@@ -47,6 +47,13 @@ for (const f of files.filter((f) => f.endsWith('.html'))) {
   const gz = inline ? gzipSync(Buffer.from(inline)).length : 0;
   if (gz > 1024) problems.push(`${relative(root, f)}: inline script ${gz} B gz > 1024`);
 }
+
+// Shared chunks: any JS not owned by an island or a page boot module must stay under 10 KB gz in total.
+// (size-limit cannot express "may match nothing", so this budget lives here.)
+const OWNED = /(^|\/)(pong|scan|world|explorer|contact)\.[^/]*\.js$|_astro_type_script_/;
+const shared = files.filter((f) => f.endsWith('.js') && relative(root, f).replaceAll('\\', '/').startsWith('dist/_astro/') && !OWNED.test(relative(root, f).replaceAll('\\', '/')));
+const sharedGz = shared.reduce((n, f) => n + gzipSync(readFileSync(f)).length, 0);
+if (sharedGz > 10_240) problems.push(`shared JS chunks ${sharedGz} B gz > 10 KB: ${shared.map((f) => relative(root, f)).join(', ')}`);
 
 const sitemap = join(dist, 'sitemap-0.xml');
 const lhrc = join(root, 'lighthouserc.json');

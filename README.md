@@ -1,8 +1,8 @@
 # edward-vj.github.io
 
-The personal site of Edward Jakunskas: computer vision and robotics engineer (MSc, Maynooth
-University) who delivers production software by directing AI agents. Live at
-<https://edward-vj.github.io/>.
+The personal site of Edward Jakunskas: computer vision and robotics engineer (MSc by research,
+Maynooth University) and, since 2026, an AI-native software engineer who delivers production
+systems by directing coding agents. Live at <https://edward-vj.github.io/>.
 
 ## What this repository is
 

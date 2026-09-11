@@ -1,8 +1,5 @@
 [
-  {
-    "name": "index.html",
-    "path": "dist/index.html",
-    "limit": "10 kB",
-    "gzip": true
-  }
+  { "name": "index.html", "path": "dist/index.html", "limit": "10 kB", "gzip": true },
+  { "name": "boot modules (page scripts that import an island)", "path": "dist/_astro/*_astro_type_script_*.js", "limit": "2 kB", "gzip": true },
+  { "name": "world island", "path": "dist/_astro/world.*.js", "limit": "120 kB", "gzip": true }
 ]
